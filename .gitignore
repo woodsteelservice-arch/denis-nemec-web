@@ -1,0 +1,7 @@
+.DS_Store
+_preview.html
+node_modules/
+.vercel
+
+# interný podklad, nepatrí na web
+*.pdf

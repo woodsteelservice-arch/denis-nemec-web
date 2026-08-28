@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denis Nemec — Sériový podnikateľ</title>
+<meta name="description" content="Denis Nemec — sériový podnikateľ. Budujem skupinu firiem v oblasti nehnuteľností, výroby, energetiky a služieb.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/favicon.png">
+<link rel="stylesheet" href="styles.css">
+<script>
+  /* po obnovení stránky vždy začíname na úvode — bez skoku na kotvu
+     a bez obnovenia predchádzajúcej pozície scrollu */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+</script>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#top" aria-label="Denis Nemec — domov">
+      <img src="img/logo-dn-white.png" alt="DN">
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">O MNE</a>
+      <a href="#projekty">PROJEKTY</a>
+      <a href="#kontakt">KONTAKT</a>
+    </nav>
+    <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="hero__frame" aria-hidden="true"></div>
+  <img class="hero__portrait" src="img/hero-denis.png" alt="Denis Nemec">
+  <div class="hero__content">
+    <h1 class="hero__name reveal">Denis Nemec</h1>
+    <p class="hero__role reveal" data-delay="1">Sériový podnikateľ</p>
+    <p class="hero__claim reveal" data-delay="2">
+      Budujem skupinu firiem v oblasti<br>
+      nehnuteľností, výroby, energetiky a služieb.
+    </p>
+    <div class="hero__cta reveal" data-delay="3">
+      <a href="#projekty" class="btn btn--solid">Projekty</a>
+      <a href="#kontakt" class="btn">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BILANCIA ══════════ -->
+<section class="about" id="about">
+  <span class="ghost">ABOUT</span>
+  <div class="wrap about__head">
+    <h2 class="reveal">Bilancia</h2>
+    <p class="reveal" data-delay="1">
+      Podnikaniu sa venujem nepretržite od <strong>18 rokov</strong>, so strategickým
+      zameraním na budovanie a rozvoj samostatne fungujúcich podnikov.
+    </p>
+  </div>
+  <div class="wrap stats" id="stats">
+    <div class="stat reveal"><span class="stat__num" data-to="8" data-suffix="+">0</span><span class="stat__lbl">rokov budovania firiem</span></div>
+    <div class="stat reveal" data-delay="1"><span class="stat__num" data-to="250" data-suffix="+">0</span><span class="stat__lbl">realizovaných projektov</span></div>
+    <div class="stat reveal" data-delay="2"><span class="stat__num" data-to="35" data-suffix="%">0</span><span class="stat__lbl">medziročný nárast</span></div>
+    <div class="stat reveal" data-delay="3"><span class="stat__num" data-to="60" data-suffix="+">0</span><span class="stat__lbl">členný tím</span></div>
+  </div>
+</section>
+
+<!-- ══════════ MAPA ══════════ -->
+<section class="map" id="posobnost">
+  <div class="wrap map__head">
+    <div class="map__intro">
+      <p class="eyebrow reveal">Pôsobnosť v</p>
+      <h2 class="reveal" data-delay="1">6 krajinách</h2>
+      <p class="map__lead reveal" data-delay="2">
+        Mapa zobrazuje trhy, na ktorých skupina pôsobí.
+        Prejdite kurzorom po krajine alebo na ňu kliknite pre detail.
+      </p>
+    </div>
+    <div class="map__kpis reveal" data-delay="2">
+      <div class="map__kpi"><span class="map__kpi-num" id="kpiCountries">6</span><span class="map__kpi-lbl">krajín</span></div>
+      <div class="map__kpi"><span class="map__kpi-num" id="kpiFirms">5</span><span class="map__kpi-lbl">firiem</span></div>
+      <div class="map__kpi"><span class="map__kpi-num" id="kpiSectors">5</span><span class="map__kpi-lbl">odvetví</span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="mapview reveal" data-delay="2" id="mapView">
+      <svg class="mapview__svg" id="mapSvg" role="img" aria-label="Interaktívna mapa pôsobnosti v Európe"></svg>
+
+      <!-- vyhľadávanie -->
+      <div class="mapui mapui--search" id="mapSearch">
+        <div class="msearch">
+          <svg class="msearch__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 0 4.9 14.32l5.39 5.4 1.42-1.42-5.4-5.39A8 8 0 0 0 10 2zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/></svg>
+          <input type="search" id="mapSearchInput" placeholder="Hľadať krajinu…" autocomplete="off" aria-label="Hľadať krajinu" aria-expanded="false" role="combobox" aria-controls="mapSearchList">
+          <button class="msearch__clear" id="mapSearchClear" aria-label="Vymazať" hidden>&times;</button>
+        </div>
+        <ul class="msearch__list" id="mapSearchList" role="listbox" hidden></ul>
+      </div>
+
+      <!-- ovládanie -->
+      <div class="mapui mapui--ctrls" id="mapCtrls" hidden>
+        <button class="mctrl" data-map="reset" aria-label="Zrušiť výber a filter">
+          <svg viewBox="0 0 24 24"><path d="M12 5V2L8 6l4 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+        </button>
+      </div>
+
+      <!-- legenda -->
+      <div class="mapui mapui--legend" id="mapLegend">
+        <p class="mlegend__title">Kategórie trhov</p>
+        <div class="mlegend__items" id="mapLegendItems"></div>
+        <button class="mlegend__reset" id="mapLegendReset" hidden>Zrušiť filter</button>
+      </div>
+
+      <!-- tooltip -->
+      <div class="mtip" id="mapTip" aria-hidden="true">
+        <span class="mtip__flag" id="mapTipFlag"></span>
+        <div>
+          <p class="mtip__name" id="mapTipName"></p>
+          <p class="mtip__meta" id="mapTipMeta"></p>
+        </div>
+      </div>
+
+      <!-- detail panel / bottom sheet -->
+      <aside class="mpanel" id="mapPanel" aria-hidden="true" aria-labelledby="mapPanelName">
+        <button class="mpanel__grab" id="mapPanelGrab" aria-label="Zavrieť detail"></button>
+        <button class="mpanel__x" data-map="close" aria-label="Zavrieť detail">&times;</button>
+        <header class="mpanel__head">
+          <span class="mpanel__flag" id="mapPanelFlag"></span>
+          <div>
+            <h3 id="mapPanelName"></h3>
+            <p class="mpanel__tier" id="mapPanelTier"></p>
+          </div>
+          <svg class="mpanel__shape" id="mapPanelShape" viewBox="0 0 100 100" aria-hidden="true"></svg>
+        </header>
+        <p class="mpanel__desc" id="mapPanelDesc"></p>
+        <div class="mpanel__stats" id="mapPanelStats"></div>
+        <div class="mpanel__meter">
+          <div class="mpanel__meter-head">
+            <span>Index pôsobenia</span><span id="mapPanelScore">0</span>
+          </div>
+          <div class="mpanel__bar"><i id="mapPanelBar"></i></div>
+          <p class="mpanel__rank" id="mapPanelRank"></p>
+        </div>
+        <div class="mpanel__firms" id="mapPanelFirms"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRINCÍPY ══════════ -->
+<section class="pillars" id="principy">
+  <img class="pillars__bg" src="img/principles.jpg" alt="">
+  <div class="pillars__grid wrap">
+    <article class="pillar reveal">
+      <h3>Systém</h3>
+      <p>Vnášam do firiem pevný systém — precízne postupy, presne definované kompetencie a jasný riadiaci štandard.</p>
+    </article>
+    <article class="pillar reveal" data-delay="1">
+      <h3>Automatizácia</h3>
+      <p>AI a moderné technológie pravidelne implementujem priamo do firemných procesov.</p>
+    </article>
+    <article class="pillar reveal" data-delay="2">
+      <h3>Udržateľnosť</h3>
+      <p>Každý biznis smerujem k plynulému rastu, ktorý vytvára dlhodobú stabilitu a trvalú hodnotu kapitálu.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════ PROJEKTY ══════════ -->
+<section class="projects" id="projekty">
+  <div class="wrap">
+    <div class="projects__head">
+      <p class="eyebrow reveal">Portfólio</p>
+      <h2 class="reveal" data-delay="1">Projekty</h2>
+    </div>
+    <div class="projects__grid" id="projectsGrid"><!-- render: main.js --></div>
+  </div>
+</section>
+
+<!-- ══════════ NÁROK ══════════ -->
+<section class="claim" id="pristup">
+  <img class="claim__bg" src="img/meeting.jpg" alt="">
+  <div class="wrap claim__inner">
+    <h2 class="reveal">Do každej investície<br>a partnerstva</h2>
+    <p class="claim__sub reveal" data-delay="1">vstupujem s rovnakým nárokom</p>
+    <div class="claim__row">
+      <span class="chip reveal" data-delay="2">Exaktné dáta</span>
+      <span class="chip reveal" data-delay="3">Jasné kompetencie</span>
+      <span class="chip reveal" data-delay="4">Dlhodobé zhodnocovanie</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ŠPORT ══════════ -->
+<section class="sport" id="sport">
+  <span class="ghost ghost--top">PARTNERS</span>
+  <img class="sport__bg" src="img/ring.jpg" alt="">
+  <div class="wrap sport__inner">
+    <div class="sport__box reveal">
+      <p class="sport__num">2x</p>
+      <h3>majster<br>Slovenska</h3>
+      <p class="sport__note">v zápasení — grécko-rímsky a voľný štýl.</p>
+    </div>
+    <blockquote class="sport__quote reveal" data-delay="2">
+      V ringu aj v podnikaní platí rovnaký základ.
+      Striktná disciplína, férový prístup
+      a zodpovednosť za každé rozhodnutie.
+    </blockquote>
+  </div>
+</section>
+
+<!-- ══════════ SPOLUPRÁCA ══════════ -->
+<section class="offer" id="spolupraca">
+  <div class="wrap">
+    <div class="offer__head">
+      <div>
+        <p class="eyebrow reveal">Spolupráca</p>
+        <h2 class="reveal" data-delay="1">Tri spôsoby, <br>ako sa spojiť</h2>
+      </div>
+      <p class="offer__lead reveal" data-delay="2">
+        Otvorený som kapitálovému vstupu, akvizícii aj spoločnej investícii.
+        Každý podnet posudzujem osobne — na základe čísel, nie sľubov.
+      </p>
+    </div>
+
+    <div class="offer__grid">
+      <article class="offer__card reveal">
+        <span class="offer__no">01</span>
+        <svg class="offer__ico" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 4l2.6 8.4L27 15l-8.4 2.6L16 26l-2.6-8.4L5 15l8.4-2.6z"/>
+        </svg>
+        <p class="offer__tag">Projekt</p>
+        <h3>Kapitálový vstup <br>do vášho nápadu</h3>
+        <p class="offer__text">
+          Máte prelomový projekt s reálnym trhom? Vstupujem doň kapitálom,
+          procesmi aj kontaktmi — ako partner, nie tichý investor.
+        </p>
+        <ul class="offer__list">
+          <li>Skoré aj rastové fázy</li>
+          <li>Podiel a jasne definovaná rola</li>
+          <li>Vyhodnotenie do 14 dní</li>
+        </ul>
+        <button class="offer__cta" data-offer="Kapitálový vstup do projektu">
+          Predstaviť projekt
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </article>
+
+      <article class="offer__card reveal" data-delay="1">
+        <span class="offer__no">02</span>
+        <svg class="offer__ico" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M5 27V13l11-8 11 8v14"/>
+          <path d="M12 27v-8h8v8"/>
+        </svg>
+        <p class="offer__tag">Odpredaj</p>
+        <h3>Odkúpim vašu <br>fungujúcu firmu</h3>
+        <p class="offer__text">
+          Zvažujete odchod z podnikania? Preberiem zabehnutú firmu aj s tímom
+          a zázemím — s korektným ocenením a diskrétnym priebehom.
+        </p>
+        <ul class="offer__list">
+          <li>Výroba, služby, energetika, gastro</li>
+          <li>Prevzatie tímu aj prevádzky</li>
+          <li>Mlčanlivosť od prvého kontaktu</li>
+        </ul>
+        <button class="offer__cta" data-offer="Odpredaj firmy">
+          Nezáväzne sa ozvať
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </article>
+
+      <article class="offer__card reveal" data-delay="2">
+        <span class="offer__no">03</span>
+        <svg class="offer__ico" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 24l7-8 5 5 6-9 6 6"/>
+          <path d="M4 28h24"/>
+        </svg>
+        <p class="offer__tag">Investovanie</p>
+        <h3>Investujme <br>spoločne</h3>
+        <p class="offer__text">
+          Podhodnotené aktíva na Slovensku a v Česku — nehnuteľnosti aj podiely
+          vo firmách. Spoločný kapitál, rozložené riziko, exaktné podklady.
+        </p>
+        <ul class="offer__list">
+          <li>Trhy SK a CZ</li>
+          <li>Vopred definovaný horizont a exit</li>
+          <li>Priebežný reporting</li>
+        </ul>
+        <button class="offer__cta" data-offer="Spoločné investície">
+          Prebrať možnosti
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ KONTAKT ══════════ -->
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <h2 class="section-title reveal">Kontakt</h2>
+    <a class="contact__mail reveal" data-delay="1" href="mailto:info@denisnemec.com">info@denisnemec.com</a>
+
+    <form class="form reveal" data-delay="2" id="contactForm" novalidate>
+      <div class="form__row">
+        <label>Meno a priezvisko
+          <input type="text" name="meno" required minlength="2" autocomplete="name">
+          <span class="err"></span>
+        </label>
+        <label>E-mail
+          <input type="email" name="email" required autocomplete="email">
+          <span class="err"></span>
+        </label>
+      </div>
+      <label>Predmet
+        <select name="predmet" id="contactSubject">
+          <option>Kapitálový vstup do projektu</option>
+          <option>Odpredaj firmy</option>
+          <option>Spoločné investície</option>
+          <option>Partnerstvo / dodávateľ</option>
+          <option>Médiá a prednášky</option>
+          <option>Iné</option>
+        </select>
+      </label>
+      <label>Správa
+        <textarea name="sprava" rows="5" required minlength="10"></textarea>
+        <span class="err"></span>
+      </label>
+      <button class="btn btn--solid" type="submit">Odoslať správu</button>
+      <p class="form__status" id="formStatus" role="status"></p>
+    </form>
+
+    <p class="contact__soc-label">Sociálne siete</p>
+    <div class="contact__soc">
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.24 8.25h4.5V24H.24zM8.25 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16V24h-4.5z"/></svg></a>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 0 0 2.12-2.12A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12z"/></svg></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.89 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.28 2.69.08 7.05.02 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.31.28 16.95.08 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer__strip" aria-hidden="true"><span>DN</span><span>DN</span><span>DN</span><span>DN</span><span>DN</span><span>DN</span><span>DN</span><span>DN</span><span>DN</span><span>DN</span></div>
+  <p>Denis Nemec © 2026. All Rights Reserved.</p>
+</footer>
+
+<!-- ══════════ MODAL ══════════ -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__card">
+    <button class="modal__x" data-close aria-label="Zavrieť">&times;</button>
+    <img class="modal__img" id="modalImg" src="" alt="">
+    <div class="modal__body">
+      <img class="modal__logo" id="modalLogo" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p class="modal__sector" id="modalSector"></p>
+      <p id="modalText"></p>
+      <ul class="modal__facts" id="modalFacts"></ul>
+    </div>
+  </div>
+</div>
+
+<button class="totop" id="toTop" aria-label="Hore">↑</button>
+
+<script src="main.js"></script>
+<script src="map-data.js" defer></script>
+<script src="map.js" defer></script>
+</body>
+</html>
