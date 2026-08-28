@@ -647,12 +647,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   background:radial-gradient(80% 50% at 50% 0%,rgba(201,180,138,.06),transparent 62%);
 }
 .offer__head{
-  position:relative;z-index:2;display:flex;justify-content:space-between;
-  align-items:flex-end;gap:3rem;flex-wrap:wrap;
-  padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,.07);
+  position:relative;z-index:2;
+  padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.07);
 }
 .offer__head h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:300;margin-top:.4rem;line-height:1.12}
-.offer__lead{max-width:42ch;font-size:.88rem;line-height:1.8;color:var(--ink-dim)}
 .offer__grid{
   position:relative;z-index:2;margin-top:2.8rem;
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;
